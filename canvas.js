@@ -9,11 +9,11 @@ const scene = new THREE.Scene();
 renderer.setClearColor(0x000000,0); 
 
 //lights
-const directionalLight = new THREE.DirectionalLight(0xffffff,0.9);
+const directionalLight = new THREE.DirectionalLight(0xffffff,0.7);
 directionalLight.position.set(7,2,7);
 scene.add( directionalLight );
 
-const directionalLight2 = new THREE.DirectionalLight(0xffffff,0.9);
+const directionalLight2 = new THREE.DirectionalLight(0xffffff,0.7);
 directionalLight2.position.set(-7,2,-7);
 scene.add( directionalLight2 );
 
