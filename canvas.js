@@ -9,8 +9,13 @@ const scene = new THREE.Scene();
 renderer.setClearColor(0x000000,0); 
 
 //lights
-const directionalLight = new THREE.DirectionalLight(0xffffff,1);
+const directionalLight = new THREE.DirectionalLight(0xffffff,0.9);
+directionalLight.position.set(7,2,7);
 scene.add( directionalLight );
+
+const directionalLight2 = new THREE.DirectionalLight(0xffffff,0.9);
+directionalLight2.position.set(-7,2,-7);
+scene.add( directionalLight2 );
 
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,100);
 camera.position.set(25,0,0);
@@ -23,17 +28,17 @@ controls.maxDistance = 20;
 controls.minDistance = 11;
 
 const loader = new THREE.TextureLoader();
+var bumpMap = loader.load("bump map.png");
 
 loader.load("osho.jpg",function(texture){
-
-    const geometry = new THREE.BoxGeometry(15,20,1);
+    const geometry = new THREE.BoxGeometry(13.6,18.1,0.8);
     var cubeMaterialArray = [];
     cubeMaterialArray.push( new THREE.MeshBasicMaterial({color:0xF3F2DA}));
     cubeMaterialArray.push( new THREE.MeshBasicMaterial({color:0xF3F2DA}));
     cubeMaterialArray.push( new THREE.MeshBasicMaterial({color:0xF3F2DA}));
     cubeMaterialArray.push( new THREE.MeshBasicMaterial({color:0xF3F2DA}));
-    cubeMaterialArray.push( new THREE.MeshBasicMaterial({map:texture}));
-    cubeMaterialArray.push( new THREE.MeshBasicMaterial({map:texture}));
+    cubeMaterialArray.push( new THREE.MeshPhongMaterial({map:texture,bumpMap:bumpMap,bumpScale:0.12}));
+    cubeMaterialArray.push( new THREE.MeshPhongMaterial({map:texture,bumpMap:bumpMap,bumpScale:0.12}));
     const material = new THREE.MeshFaceMaterial(cubeMaterialArray);
     const cube = new THREE.Mesh(geometry,material);
     cube.rotation.y=10;
