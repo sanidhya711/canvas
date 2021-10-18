@@ -1,7 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.123.0/build/three.module.js';
 import { OrbitControls } from "https://unpkg.com/three@0.123.0/examples/jsm/controls/OrbitControls.js";
 
-const renderer = new THREE.WebGLRenderer({alpha:true});
+const renderer = new THREE.WebGLRenderer({alpha:true, antialias: true});
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
